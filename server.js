@@ -9,12 +9,13 @@ const db = require('./models');
 // app
 const app = express();
 app.use(cors({
-  origin: "https://pacifica-lvelitoruiz.vercel.app",
+  origin: 'https://pacifica-lvelitoruiz.vercel.app',
   credentials: true,
 }));
 app.use(bodyParser.json());
 app.use(
     cookieSession({
+      sameSite: 'none',
       name: "test-session",
       secret: "COOKIE_SECRET",
       httpOnly: true,
