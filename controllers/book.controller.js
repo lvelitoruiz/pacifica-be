@@ -13,7 +13,7 @@ exports.createBook = (req, res) => {
 
         const entity = db.get('books').takeRight(1).value()[0];
         const id = ((entity) ? (entity.id + 1) : 0);
-
+    
         book = {
             ...book,
             id: id
@@ -21,8 +21,6 @@ exports.createBook = (req, res) => {
 
         db.get('books').push(book).write();
 
-        res.setHeader('Access-Control-Allow-Origin', 'https://pacifica-lvelitoruiz.vercel.app');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
         res.sendStatus(200);
     } else {
 
@@ -35,13 +33,11 @@ exports.updateBook = (req, res) => {
     if (book) {
 
         // update
-        db.get('books').chain().find({ id: book.id }).assign(book).write();
+        db.get('books').chain().find({ id: book.id }).assign( book ).write();
 
-        res.setHeader('Access-Control-Allow-Origin', 'https://pacifica-lvelitoruiz.vercel.app');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
         res.sendStatus(200);
     } else {
-
+        
         res.status(500).send('uncaught error....');
     }
 };
@@ -52,12 +48,9 @@ exports.deleteBook = (req, res) => {
     if (id) {
 
         db.get('books').remove({ id: id }).write();
-
-        res.setHeader('Access-Control-Allow-Origin', 'https://pacifica-lvelitoruiz.vercel.app');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
         res.sendStatus(200);
     } else {
-
+        
         res.status(500).send('uncaught error....');
     }
 }; 
