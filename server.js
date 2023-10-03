@@ -9,7 +9,7 @@ const db = require('./models');
 // app
 const app = express();
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: process.env.CLIENT_URL || "http://localhost:3001",
   credentials: true,
 }));
 app.use(bodyParser.json());
