@@ -9,7 +9,7 @@ const db = require('./models');
 // app
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3002',
+  origin: 'http://pacifica-j4lw6kkih-lvelitoruiz.vercel.app',
   credentials: true,
 }));
 app.use(bodyParser.json());
