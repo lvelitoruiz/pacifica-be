@@ -1,1 +1,1 @@
-web: node index.js
+web: nodemon --ignore 'db.json' server.js
